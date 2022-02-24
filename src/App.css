@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
-.App{
-    height:100vh;
+.App {
+    height: 100vh;
     width: 100vw;
-    background-color: #2f74c0;
-    font-family: 'Redressed', cursive;
+    background-color: #282C34;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
-.heading{
+
+.heading {
     z-index: 1;
 }

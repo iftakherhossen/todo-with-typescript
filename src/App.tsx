@@ -9,6 +9,7 @@ import { AiFillDelete } from 'react-icons/ai';
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todoLists, setTodoLists] = useState<Todo[]>([]);
+
   const addHandle = (e: React.FormEvent) => {
     e.preventDefault();
     if (todo) {
@@ -17,17 +18,20 @@ const App: React.FC = () => {
       setTodo('')
     }
   }
+
   useEffect(() => {
     const getItem: any = localStorage.getItem('todoList');
     if (getItem) {
       setTodoLists(JSON.parse(getItem))
     }
-  }, [])
+  }, []);
+
   const handleDone = (id: number) => {
     setTodoLists(
       todoLists.map(todoList => todoList.id === id ? { ...todoList, isDone: !todoList.isDone } : todoList)
     )
   }
+
   const handleDelete = (id: number) => {
     setTodoLists(
       todoLists.filter(todoList => todoList.id !== id)
@@ -46,22 +50,31 @@ const App: React.FC = () => {
                 <div className="alert alert-light" role="alert">
                   <div className='d-flex justify-content-between align-items-center'>
                     {
-                      todoList.isDone ? <s className='text-black fs-4'>{todoList.todo}</s> : <span className='text-black fs-4'>{todoList.todo}</span>
+                      todoList.isDone ? <s className='text-black fs-4'>{todoList.todo}</s> :
+                        <span className='text-black fs-4'>{todoList.todo}</span>
                     }
                     <div className='d-flex align-items-center'>
-                      <span style={{ cursor: 'pointer' }} className='me-lg-3 me-md-3 me-2 text-success'
+                      <span
+                        style={{ cursor: 'pointer' }}
+                        className='me-lg-3 me-md-3 me-2 text-success'
                         onClick={() => handleDone(todoList.id)}
-                      ><FaCheck /></span>
+                      >
+                        <FaCheck style={{ fontSize: 20 }} />
+                      </span>
                       <span
                         onClick={() => handleDelete(todoList.id)}
-                        style={{ cursor: 'pointer' }} className='text-danger'><AiFillDelete /></span>
+                        style={{ cursor: 'pointer' }}
+                        className='text-danger'
+                      >
+                        <AiFillDelete style={{ fontSize: 24 }} />
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             )}
         </div>
-      </div>)
+      </div>
 
     </div>
   );

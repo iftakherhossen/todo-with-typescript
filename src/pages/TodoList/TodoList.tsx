@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Props {
     todo: string;
@@ -14,8 +14,19 @@ const TodoList: React.FC<Props> = ({ todo, setTodo, addHandle }) => {
             <form onSubmit={addHandle}>
                 <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-lg-4 col-md-8 col-10 position-relative d-flex justify-content-center align-items-center ">
-                        <input className='form-control border border-3 rounded-pill' type="input" placeholder='write your daily task' value={todo} onChange={(e) => setTodo(e.target.value)} />
-                        <input className='btn btn-primary position-absolute end-0 border border-3 rounded-pill' type="submit" value='Add' />
+                        <input
+                            className='form-control border border-3 rounded-pill'
+                            type="input"
+                            placeholder='write your daily task'
+                            value={todo}
+                            onChange={(e) => setTodo(e.target.value)}
+                        />
+                        <input
+                            className='btn position-absolute end-0 border border-3 rounded-pill'
+                            type="submit"
+                            value='Add'
+                            style={{ backgroundColor: '#282C34', color: 'white'}}
+                        />
                     </div>
                 </div>
             </form>
